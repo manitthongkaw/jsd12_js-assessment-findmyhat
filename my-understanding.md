@@ -3,3 +3,6 @@
 1. เตรียมโฟลเดอร์ และ ไฟล์ต่าง ๆ สำหรับโปรเจ็ค / `npm init -y` / `npm install prompt-sync`
 2. เตรียม github repo / `git init` --> `git push`
 3. เรียก prompt = require('prompt-sync') มาใช้ และตั้งค่าแต่ละ field
+4. สร้าง const สำหรับค่าตัวแปลต่าง ๆ
+5. สร้าง class และ constructor
+6. สร้าง map 3x3
