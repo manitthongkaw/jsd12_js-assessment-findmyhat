@@ -1,0 +1,5 @@
+# My Understanding for find my hat
+
+1. เตรียมโฟลเดอร์ และ ไฟล์ต่าง ๆ สำหรับโปรเจ็ค / `npm init -y` / `npm install prompt-sync`
+2. เตรียม github repo / `git init` --> `git push`
+3. เรียก prompt = require('prompt-sync') มาใช้ และตั้งค่าแต่ละ field
