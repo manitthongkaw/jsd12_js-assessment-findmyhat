@@ -1,9 +1,9 @@
-const prompt = require('prompt-sync')({sigint: true});
+const prompt = require('prompt-sync')({sigint:true});
 
-const hat = '🏐';
-const hole = '🚩';
-const ground = '🟩';
-const player = '🏌️‍♂️';
+const hat = '⚾';
+const hole = '☢';
+const ground = '✻';
+const player = '☝';
 
 class Field {
 
@@ -13,15 +13,16 @@ class Field {
     this.areaX = 0;
   }
 
-  checkField() {
+  print() {
+    console.log(this.field.map(row => row.join('  ')).join('\n'));
+  }
 
-    console.log("Height (Y):", this.field.length);
-    console.log("FWidth (X):", this.field[0].length);
+  play() {
 
     while (true) {
 
       // Check move on field
-      let move = prompt("Go go go [w = up] [a = down] [s = left] [d = right] : ");
+      let move = prompt("Go go go [w = up] [s = down] [a = left] [d = right] : ");
       if (move === "w") {this.areaY -= 1};
       if (move === "s") {this.areaY += 1};
       if (move === "a") {this.areaX -= 1};
@@ -36,9 +37,17 @@ class Field {
         break;
       }
 
+      const point = this.field[this.areaY][this.areaX];
       // check move to hole
-
+      if (point === hole) {
+        console.log('☢ ตกหลุม!');
+        break;
+      }
       // check move to hat
+      if (point === hat) {
+        console.log('⚾ เจอลูกบอลแล้ว!');
+        break;
+      }
 
     }
   }
@@ -52,4 +61,4 @@ const myField = new Field([
   [ground, ground, hole]
 ]);
 
-myField.checkField();
+myField.play();
