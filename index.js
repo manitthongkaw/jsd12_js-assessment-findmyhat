@@ -11,15 +11,17 @@ class Field {
     this.field = field;
     this.areaY = 0;
     this.areaX = 0;
-  }
-
-  print() {
-    console.log(this.field.map(row => row.join('  ')).join('\n'));
-  }
+  };
 
   play() {
 
     while (true) {
+
+      // Output field
+      console.clear();
+      console.log(this.field.map(row => row.join('  ')).join('\n'));
+
+      this.field[this.areaY][this.areaX] = ground;
 
       // Check move on field
       let move = prompt("Go go go [w = up] [s = down] [a = left] [d = right] : ");
@@ -32,22 +34,15 @@ class Field {
       if (
         this.areaY < 0 || this.areaY >= this.field.length ||
         this.areaX < 0 || this.areaX >= this.field[0].length
-      ) {
-        console.log('✘ ออกนอกแผนที่!');
-        break;
-      }
+      ) {console.log('✘ ออกนอกแผนที่!'); break;}
 
       const point = this.field[this.areaY][this.areaX];
       // check move to hole
-      if (point === hole) {
-        console.log('☢ ตกหลุม!');
-        break;
-      }
+      if (point === hole) {console.log('☢ ตกหลุม!'); break;}
       // check move to hat
-      if (point === hat) {
-        console.log('⚾ เจอลูกบอลแล้ว!');
-        break;
-      }
+      if (point === hat) {console.log('⚾ เจอลูกบอลแล้ว!'); break;}
+
+      this.field[this.areaY][this.areaX] = player;
 
     }
   }
@@ -55,10 +50,10 @@ class Field {
 }
 
 const myField = new Field([
-  [player, ground, ground],
-  [ground, hole, ground],
-  [ground, ground, hat],
-  [ground, ground, hole]
+  [player, ground, ground, hole],
+  [ground, hole, ground, ground],
+  [ground, ground, hat, ground],
+  [hole, ground, ground, hole]
 ]);
 
 myField.play();
